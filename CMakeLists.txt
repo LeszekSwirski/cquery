@@ -35,7 +35,9 @@ if(NOT CYGWIN)
   set_property(TARGET cquery PROPERTY CXX_EXTENSIONS OFF)
 endif()
 
-if(${CMAKE_SYSTEM_NAME} STREQUAL Windows)
+if(${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC OR 
+   (${CMAKE_SYSTEM_NAME} STREQUAL Windows AND 
+    ${CMAKE_CXX_COMPILER_ID} STREQUAL Clang))
   # Common MSVC/Clang(Windows) options
   target_compile_options(cquery PRIVATE
                          /nologo
